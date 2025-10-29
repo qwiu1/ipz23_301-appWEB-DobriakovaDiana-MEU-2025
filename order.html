@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Оформлення замовлення — SweetLife</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Оформити замовлення</h1>
+    <a href="index.html">⬅ Назад на головну</a>
+  </header>
+
+  <form class="order-form" id="orderForm">
+    <label>Ім'я:
+      <input type="text" required>
+    </label>
+
+    <label>Номер телефону:
+      <input type="tel" required>
+    </label>
+
+    <label>Обрати категорію:
+      <select required>
+        <option>Торти</option>
+        <option>Пончики</option>
+        <option>Капкейки</option>
+        <option>Пироги</option>
+      </select>
+    </label>
+
+    <label>Назва виробу(та коментар за бажанням):
+      <textarea placeholder="Наприклад: без горіхів..."></textarea>
+    </label>
+
+    <button type="submit">Надіслати замовлення</button>
+  </form>
+
+  <footer>
+    <p>© 2025 SweetLife</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('orderForm');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // не дає сторінці перезавантажитись
+      alert('✅ Замовлення надіслано!');
+      form.reset(); // очищає поля після натискання
+    });
+  </script>
+</body>
+</html>

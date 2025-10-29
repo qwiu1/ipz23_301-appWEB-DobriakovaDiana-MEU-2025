@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fef5ed;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  background-color: #fde4d0;
+  padding: 20px;
+}
+
+.logo {
+  max-width: 80px;
+}
+
+button {
+  background-color: #d87b6e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: #c36b5f;
+}
+
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.category-grid button {
+  width: 120px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.advantages ul {
+  list-style: none;
+  padding: 0;
+}
+
+.advantages li {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.price-list {
+  margin: 40px auto;
+  width: 90%;
+  max-width: 800px;
+}
+
+.price-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.price-list th, .price-list td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.price-list th {
+  background-color: #fde4d0;
+  font-weight: bold;
+}
+
+.price-list tr:hover {
+  background-color: #f8f8f8;
+}
+
+footer {
+  background-color: #fde4d0;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 30px auto;
+  gap: 15px;
+}
+
+.order-form input,
+.order-form select,
+.order-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+  .category-grid button {
+    width: 45%;
+  }
+  .price-list table {
+    font-size: 14px;
+  }
+}
