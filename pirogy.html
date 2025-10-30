@@ -3,7 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <title>Пироги — SweetLife</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fef5ed;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #fde4d0;
+      padding: 20px;
+    }
+
+    header a {
+      color: #d87b6e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      padding: 0 10px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      width: 200px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin: 10px 0 5px 0;
+      color: #d87b6e;
+    }
+
+    .product-info {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
+
+    footer {
+      background-color: #fde4d0;
+      padding: 10px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,17 +90,34 @@
 
   <section class="products">
     <div class="card">
-      <img src="images/tort.jpg" alt="Полуничний торт">
-      <p>Полуничний торт</p>
+      <img src="images/pirogcheese.jpg" alt="Сирний пиріг">
+      <p class="product-name">Сирний пиріг</p>
+      <p class="product-info">Склад: сир, яйця, цукор, тісто.</p>
+      <p class="product-info">Ціна: 300 грн</p>
     </div>
+
     <div class="card">
-      <img src="images/tort.jpg" alt="Шоколадний торт">
-      <p>Шоколадний торт</p>
+      <img src="images/pirogmeat.jpg" alt="М'ясний пиріг">
+      <p class="product-name">М'ясний пиріг</p>
+      <p class="product-info">Склад: м'ясо, цибуля, тісто.</p>
+      <p class="product-info">Ціна: 350 грн</p>
     </div>
+
     <div class="card">
-      <img src="images/tort.jpg" alt="Весільний торт">
-      <p>Весільний торт</p>
+      <img src="images/pirogsweet.jpg" alt="Солодкий пиріг">
+      <p class="product-name">Солодкий пиріг</p>
+      <p class="product-info">Склад: фрукти, цукор, тісто.</p>
+      <p class="product-info">Ціна: 280 грн</p>
     </div>
+
+    <div class="card">
+      <img src="images/pirog.png" alt="Сливовий пиріг">
+      <p class="product-name">Сливовий пиріг</p>
+      <p class="product-info">Склад: борошно, сливи, цукор, яйця, масло, розпушувач.</p>
+      <p class="product-info">Ціна: 280 грн</p>
+    </div>
+
+
   </section>
 
   <footer>
@@ -31,3 +125,4 @@
   </footer>
 </body>
 </html>
+

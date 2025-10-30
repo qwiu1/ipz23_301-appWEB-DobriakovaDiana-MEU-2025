@@ -40,6 +40,19 @@ button:hover {
 
 .category-grid button {
   width: 120px;
+  height: 120px; /* однаковий розмір для всіх категорій */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-grid button img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover; /* картинка заповнює блок без спотворення */
+  margin-bottom: 5px;
+  border-radius: 8px;
 }
 
 .products {
@@ -60,6 +73,8 @@ button:hover {
 
 .card img {
   width: 100%;
+  height: 200px;      /* фіксована висота для всіх карток */
+  object-fit: cover;   /* обрізає зайве, зберігаючи пропорції */
   border-radius: 10px;
 }
 
@@ -87,7 +102,8 @@ button:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.price-list th, .price-list td {
+.price-list th,
+.price-list td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: center;
@@ -132,6 +148,7 @@ footer {
   }
   .category-grid button {
     width: 45%;
+    height: 120px; /* адаптивна висота */
   }
   .price-list table {
     font-size: 14px;

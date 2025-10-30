@@ -3,7 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <title>Торти — SweetLife</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fef5ed;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #fde4d0;
+      padding: 20px;
+    }
+
+    header a {
+      color: #d87b6e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      padding: 0 10px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      width: 200px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin: 10px 0 5px 0;
+      color: #d87b6e;
+    }
+
+    .product-info {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
+
+    footer {
+      background-color: #fde4d0;
+      padding: 10px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -14,15 +91,24 @@
   <section class="products">
     <div class="card">
       <img src="images/tort.png" alt="Полуничний торт">
-      <p>Полуничний торт</p>
+      <p class="product-name">Полуничний торт</p>
+      <p class="product-info">Склад: борошно, яйця, полуниця, цукор, масло.</p>
+      <p class="product-info">Ціна: 450 грн</p>
     </div>
+
     <div class="card">
       <img src="images/tort2.jpg" alt="Шоколадний торт">
-      <p>Шоколадний торт</p>
+      <p class="product-name">Шоколадний торт</p>
+      <p class="product-info">Склад: борошно, яйця, шоколад, цукор, масло.</p>
+      <p class="product-info">Ціна: 500 грн</p>
     </div>
+
     <div class="card">
       <img src="images/tort3.jpeg" alt="Весільний торт">
-      <p>Весільний торт</p>
+      <p class="product-name">Весільний торт</p>
+      <p class="product-info">Склад: борошно, яйця, крем, цукор, фрукти.</p>
+      <p class="product-info">Ціна: 1200 грн</p>
+      <p class="product-info">Робимо за вашим дизайном!</p>
     </div>
   </section>
 

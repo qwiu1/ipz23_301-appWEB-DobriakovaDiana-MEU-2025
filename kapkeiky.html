@@ -3,7 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <title>Капкейки — SweetLife</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fef5ed;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #fde4d0;
+      padding: 20px;
+    }
+
+    header a {
+      color: #d87b6e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      padding: 0 10px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      width: 200px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin: 10px 0 5px 0;
+      color: #d87b6e;
+    }
+
+    .product-info {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
+
+    footer {
+      background-color: #fde4d0;
+      padding: 10px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,16 +90,31 @@
 
   <section class="products">
     <div class="card">
-      <img src="images/tort.jpg" alt="Полуничний торт">
-      <p>Полуничний торт</p>
+      <img src="images/kapkeikychokolate.jpg" alt="Шоколадні капкейки">
+      <p class="product-name">Шоколадні капкейки</p>
+      <p class="product-info">Склад: борошно, яйця, шоколад, цукор, масло.</p>
+      <p class="product-info">Ціна: 40 грн / шт</p>
     </div>
+
     <div class="card">
-      <img src="images/tort.jpg" alt="Шоколадний торт">
-      <p>Шоколадний торт</p>
+      <img src="images/kapkeikyfryktovi.jpg" alt="Фруктові капкейки">
+      <p class="product-name">Фруктові капкейки</p>
+      <p class="product-info">Склад: борошно, яйця, фрукти, цукор, масло.</p>
+      <p class="product-info">Ціна: 45 грн / шт</p>
     </div>
+
     <div class="card">
-      <img src="images/tort.jpg" alt="Весільний торт">
-      <p>Весільний торт</p>
+      <img src="images/kapkeikylimoni.jpg" alt="Лимонні капкейки">
+      <p class="product-name">Лимонні капкейки</p>
+      <p class="product-info">Склад: борошно, яйця, лимон, цукор, масло.</p>
+      <p class="product-info">Ціна: 40 грн / шт</p>
+    </div>
+
+    <div class="card">
+      <img src="images/kapkeiky.png" alt="Набір капкейків з ягодами">
+      <p class="product-name">Набір капкейків</p>
+      <p class="product-info">Склад: борошно, яйця, масло, цукор, ожина, лохина.</p>
+      <p class="product-info">Ціна: 250 грн / набір</p>
     </div>
   </section>
 
