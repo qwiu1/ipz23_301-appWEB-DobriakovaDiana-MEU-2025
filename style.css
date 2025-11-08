@@ -137,7 +137,7 @@ footer {
 .order-form textarea {
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #a06e6e;
   border-radius: 8px;
   width: 100%;
 }
@@ -152,5 +152,103 @@ footer {
   }
   .price-list table {
     font-size: 14px;
+  }
+}
+/* ===== БОКОВИЙ КОШИК ===== */
+#cartSidebar {
+  position: fixed;
+  top: 0;
+  right: -320px; /* спочатку за межами екрану */
+  width: 300px;
+  height: 100%;
+  background: #fffaf6;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+#cartSidebar.open {
+  right: 0;
+}
+
+#cartSidebar h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #d87b6e;
+}
+
+#cartSidebar .closeSidebar {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #c36b5f;
+}
+
+#cartItems {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+#cartItems li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+#cartItems li .remove {
+  background: none;
+  border: none;
+  color: #c36b5f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#totalPrice {
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: right;
+}
+
+#checkoutBtn {
+  background-color: #d87b6e;
+  color: white;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+}
+
+#checkoutBtn:hover {
+  background-color: #c36b5f;
+}
+
+/* Адаптивність для мобільних */
+@media (max-width: 600px) {
+  #cartSidebar {
+    width: 80%;
+    padding: 15px;
+  }
+
+  #cartItems li {
+    font-size: 14px;
+  }
+
+  #checkoutBtn {
+    font-size: 14px;
+    padding: 8px;
   }
 }

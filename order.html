@@ -7,46 +7,55 @@
 </head>
 <body>
   <header>
-    <h1>Оформити замовлення</h1>
-    <a href="index.html">⬅ Назад на головну</a>
+    <h1>Оформлення замовлення</h1>
+    <a href="index.html">⬅ Назад</a>
   </header>
 
-  <form class="order-form" id="orderForm">
-    <label>Ім'я:
-      <input type="text" required>
-    </label>
+  <main>
+    <section class="order-summary">
+      <h2>Ваше замовлення</h2>
+      <ul id="orderItems"></ul>
+      <p id="orderTotal"></p>
+    </section>
 
-    <label>Номер телефону:
-      <input type="tel" required>
-    </label>
-
-    <label>Обрати категорію:
-      <select required>
-        <option>Торти</option>
-        <option>Пончики</option>
-        <option>Капкейки</option>
-        <option>Пироги</option>
-      </select>
-    </label>
-
-    <label>Назва виробу(та коментар за бажанням):
-      <textarea placeholder="Наприклад: без горіхів..."></textarea>
-    </label>
-
-    <button type="submit">Надіслати замовлення</button>
-  </form>
+    <form class="order-form" id="orderForm">
+      <label>Ім’я:
+        <input type="text" required>
+      </label>
+      <label>Номер телефону:
+        <input type="tel" required>
+      </label>
+      <label>Коментар:
+        <textarea placeholder="Наприклад: доставити до 18:00"></textarea>
+      </label>
+      <button type="submit">Підтвердити замовлення</button>
+    </form>
+  </main>
 
   <footer>
     <p>© 2025 SweetLife</p>
   </footer>
 
   <script>
+    const items = JSON.parse(localStorage.getItem('cart')) || [];
+    const list = document.getElementById('orderItems');
+    const totalEl = document.getElementById('orderTotal');
     const form = document.getElementById('orderForm');
 
-    form.addEventListener('submit', function(event) {
-      event.preventDefault(); // не дає сторінці перезавантажитись
-      alert('✅ Замовлення надіслано!');
-      form.reset(); // очищає поля після натискання
+    let total = 0;
+    items.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} — ₴${item.price}`;
+      list.appendChild(li);
+      total += item.price;
+    });
+    totalEl.textContent = `Разом до сплати: ₴${total}`;
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('✅ Дякуємо! Замовлення прийнято!');
+      localStorage.removeItem('cart');
+      window.location.href = 'index.html';
     });
   </script>
 </body>

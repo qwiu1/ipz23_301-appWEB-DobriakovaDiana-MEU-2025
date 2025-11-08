@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Капкейки — SweetLife</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -69,20 +70,102 @@
       margin: 0;
     }
 
+    /* ===== Боковий кошик ===== */
+    .cart {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background: #fde4d0;
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    .cart-items {
+      display: none;
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      width: 300px;
+      max-height: 80%;
+      padding: 15px;
+      text-align: left;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .cart-items ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cart-items li {
+      margin-bottom: 8px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .remove-item {
+      background: none;
+      border: none;
+      color: #c36b5f;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #checkoutBtn {
+      background-color: #d87b6e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #checkoutBtn:hover {
+      background-color: #c36b5f;
+    }
+
+    @media (max-width: 600px) {
+      .card { width: 90%; }
+      .cart-items { width: 80%; }
+    }
+
     footer {
       background-color: #fde4d0;
       padding: 10px;
       margin-top: 30px;
     }
-
-    @media (max-width: 600px) {
-      .card {
-        width: 90%;
-      }
-    }
   </style>
 </head>
 <body>
+
+  <!-- Кнопка кошика -->
+  <div class="cart" onclick="toggleCart()">🛒 Кошик (<span id="cart-count">0</span>)</div>
+
+  <!-- Бокова панель кошика -->
+  <div class="cart-items" id="cart-items">
+    <h3>Ваш кошик</h3>
+    <ul id="cart-list"></ul>
+    <p><strong>Разом:</strong> <span id="total">0</span> грн</p>
+    <button id="checkoutBtn">Оформити замовлення</button>
+  </div>
+
   <header>
     <h1>Капкейки</h1>
     <a href="index.html">⬅ Назад</a>
@@ -94,6 +177,7 @@
       <p class="product-name">Шоколадні капкейки</p>
       <p class="product-info">Склад: борошно, яйця, шоколад, цукор, масло.</p>
       <p class="product-info">Ціна: 40 грн / шт</p>
+      <button class="add-btn" onclick="addToCart('Шоколадні капкейки', 40)">Додати в кошик</button>
     </div>
 
     <div class="card">
@@ -101,6 +185,7 @@
       <p class="product-name">Фруктові капкейки</p>
       <p class="product-info">Склад: борошно, яйця, фрукти, цукор, масло.</p>
       <p class="product-info">Ціна: 45 грн / шт</p>
+      <button class="add-btn" onclick="addToCart('Фруктові капкейки', 45)">Додати в кошик</button>
     </div>
 
     <div class="card">
@@ -108,6 +193,7 @@
       <p class="product-name">Лимонні капкейки</p>
       <p class="product-info">Склад: борошно, яйця, лимон, цукор, масло.</p>
       <p class="product-info">Ціна: 40 грн / шт</p>
+      <button class="add-btn" onclick="addToCart('Лимонні капкейки', 40)">Додати в кошик</button>
     </div>
 
     <div class="card">
@@ -115,11 +201,60 @@
       <p class="product-name">Набір капкейків</p>
       <p class="product-info">Склад: борошно, яйця, масло, цукор, ожина, лохина.</p>
       <p class="product-info">Ціна: 250 грн / набір</p>
+      <button class="add-btn" onclick="addToCart('Набір капкейків', 250)">Додати в кошик</button>
     </div>
   </section>
 
   <footer>
     <p>© 2025 SweetLife</p>
   </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = cart.reduce((sum, item) => sum + item.price, 0);
+
+    function addToCart(name, price) {
+      cart.push({name, price});
+      total += price;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartList();
+    }
+
+    function updateCartList() {
+      const list = document.getElementById('cart-list');
+      list.innerHTML = '';
+      cart.forEach((item,index)=>{
+        const li = document.createElement('li');
+        li.textContent = `${item.name} — ${item.price} грн`;
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = '✖';
+        removeBtn.className = 'remove-item';
+        removeBtn.onclick = () => {
+          total -= item.price;
+          cart.splice(index,1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartList();
+        };
+        li.appendChild(removeBtn);
+        list.appendChild(li);
+      });
+      document.getElementById('cart-count').textContent = cart.length;
+      document.getElementById('total').textContent = total;
+    }
+
+    function toggleCart() {
+      const cartBox = document.getElementById('cart-items');
+      cartBox.style.display = cartBox.style.display === 'block' ? 'none' : 'block';
+    }
+
+    document.getElementById('checkoutBtn').onclick = () => {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      window.location.href = 'order.html';
+    }
+
+    updateCartList();
+  </script>
+
 </body>
 </html>
+
